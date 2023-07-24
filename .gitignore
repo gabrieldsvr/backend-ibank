@@ -1,2 +1,4 @@
 /.idea
 backend-ibanck.iml
+.env
+/node_modules

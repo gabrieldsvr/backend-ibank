@@ -1,0 +1,33 @@
+{
+  "name": "backend-ibank",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/app.js",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.374.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "logger-sequelize": "^1.7.0",
+    "mysql2": "^3.3.2",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.32.1"
+  },
+  "scripts": {
+    "dev": "nodemon app.js localhost 8090",
+    "dev:migrate": "cross-env RUN_MIGRATIONS=true nodemon app.js localhost 8090",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrieldsvr/backend-ibank.git"
+  },
+  "author": "Gabriel Dos Santos Vargas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrieldsvr/backend-ibank/issues"
+  },
+  "homepage": "https://github.com/gabrieldsvr/backend-ibank#readme"
+}

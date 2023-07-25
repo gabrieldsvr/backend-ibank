@@ -4,6 +4,9 @@ const CategoriasController = require('../controllers/categoriasController');
 const router = express.Router();
 const categorias = new CategoriasController();
 
+
+
+
 // Rota para criar uma conta
 router.post('/categorias', categorias.createConta);
 

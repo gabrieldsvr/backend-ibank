@@ -1,10 +1,14 @@
 const express = require('express');
 const ContasController = require('../controllers/contasController');
+const {loginController} = require("../controllers/loginControllers");
 
 const router = express.Router();
 const contasController = new ContasController();
 
 // Rota para criar uma conta
+
+router.use('/contas',loginController.autenticacaoMiddleware);
+
 router.post('/contas', contasController.createConta);
 
 // Rota para buscar todas as contas

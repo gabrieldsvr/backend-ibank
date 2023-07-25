@@ -13,7 +13,7 @@ class ContasController {
 
     async findContas(req, res) {
         try {
-            const contas = await contasService.buscarContas();
+            const contas = await contasService.buscarContas(req.usuario);
             res.json(contas);
         } catch (error) {
             res.status(500).json({ error: 'Não foi possível buscar as contas.' });
@@ -23,7 +23,7 @@ class ContasController {
     async buscarContaPorId(req, res) {
         try {
             const { id } = req.params;
-            const conta = await contasService.buscarContaPorId(id);
+            const conta = await contasService.buscarContaPorId(id,req.usuario);
             if (!conta) {
                 return res.status(404).json({ error: 'Conta não encontrada.' });
             }

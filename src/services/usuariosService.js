@@ -31,7 +31,6 @@ class UsuariosService {
             throw new Error(error);
         }
     }
-
     async buscarUsuarioPorId(id) {
         try {
             return await Usuarios.findByPk(id);
@@ -39,7 +38,6 @@ class UsuariosService {
             throw new Error(`Erro ao buscar o usuário por ID: ${error.message}`);
         }
     }
-
     async buscarUsuarioPorEmail(email) {
         try {
             return await Usuarios.findOne({where: {email}});
@@ -47,7 +45,6 @@ class UsuariosService {
             throw new Error(`Erro ao buscar o usuário por email: ${error.message}`);
         }
     }
-
     async atualizarUsuario(id, novosDadosUsuario) {
         try {
             const usuario = await Usuarios.findByPk(id);
@@ -61,7 +58,6 @@ class UsuariosService {
             throw new Error(`Erro ao atualizar o usuário: ${error.message}`);
         }
     }
-
     async excluirUsuario(id) {
         try {
             const usuario = await Usuarios.findByPk(id);
@@ -75,9 +71,8 @@ class UsuariosService {
             throw new Error(`Erro ao excluir o usuário: ${error.message}`);
         }
     }
-
     async validarUsuario(usuariosDTO) {
-        const {nome, email, senha, status} = usuariosDTO;
+        const {nome, email, senha} = usuariosDTO;
 
         if (!nome || !email || !senha) {
             throw new Error('Esta faltando dados.');

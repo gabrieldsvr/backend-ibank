@@ -16,9 +16,9 @@ class ContasService {
     // Método para criar uma conta
     async criarConta(dados) {
         try {
-            const { nome, tipo, saldo, cor, banco, status } = dados;
+            const { nome, tipo, saldo, cor, banco,usuario, status } = dados;
 
-            if (!nome || !tipo || !saldo || !cor) {
+            if (!nome || !tipo || !saldo || !cor || !banco || !usuario) {
                   throw new Error('Esta faltando dados.');
             }
 
@@ -27,6 +27,7 @@ class ContasService {
                 tipo,
                 banco,
                 saldo,
+                usuario,
                 cor,
                 status,
             });
@@ -50,18 +51,22 @@ class ContasService {
     }
 
     // Método para buscar todas as contas
-    async buscarContas() {
+    async buscarContas(usuario) {
         try {
-            return await Contas.findAll();
+            return await Contas.findAll({
+                where: { usuario: usuario }
+            });
         } catch (error) {
             throw new Error('Não foi possível buscar as contas.');
         }
     }
 
     // Método para buscar uma conta pelo ‘ID’
-    async buscarContaPorId(id) {
+    async buscarContaPorId(id,usuario) {
         try {
-            return await Contas.findByPk(id);
+            return await Contas.findOne({
+                where: { id: id, usuarioId: usuario},
+            });
         } catch (error) {
             throw new Error('Não foi possível buscar a conta.');
         }

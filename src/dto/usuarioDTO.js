@@ -9,7 +9,7 @@ class UsuarioDTODTO extends InterfaceDTO {
     _status;
 
 
-     constructor({id, nome, email, senha, status}) {
+    constructor({id, nome, email, senha, status}) {
         super();
         this._id = id;
         this._nome = nome;
@@ -49,7 +49,12 @@ class UsuarioDTODTO extends InterfaceDTO {
     }
 
     set senha(value) {
-        this._senha =  bcrypt.hash(value,10);
+        bcrypt.hash(value, 10)
+            .then((hash) => {
+                this._senha = hash;
+            }).catch((error) => {
+                console.error('Erro ao criar hash da senha:', error);
+            });
     }
 
     get status() {
@@ -60,4 +65,5 @@ class UsuarioDTODTO extends InterfaceDTO {
         this._status = value;
     }
 }
+
 module.exports = UsuarioDTODTO;

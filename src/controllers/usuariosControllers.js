@@ -9,6 +9,7 @@ class UsuariosController {
         }
         return UsuariosController.instance;
     }
+
     async createUsuario(req, res) {
         try {
             const dataJson = req.body;
@@ -19,7 +20,7 @@ class UsuariosController {
             const novoUsuario = await usuariosServices.criarUsuario(usuarioDTO);
             res.status(201).json(novoUsuario);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            res.status(500).json({error: error.message});
         }
     }
 }

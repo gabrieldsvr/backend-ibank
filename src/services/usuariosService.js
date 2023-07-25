@@ -9,19 +9,18 @@ class UsuariosService {
 
         return UsuariosService.instance;
     }
-    async criarUsuario(usuariosDTO) {
+    async criarUsuario(usuarioDTO) {
         try {
 
-            const {nome, email, senha, status} = usuariosDTO;
+            const {nome, email, senha, status} = usuarioDTO;
 
-            console.log({nome, email, senha, status})
-            if (!nome || !email || !senha) {
-                throw new Error('Esta faltando dados.');
-            }
+            await this.validarUsuario(usuarioDTO);
+
             return await Usuarios.create({
                 nome,
                 email,
-                senha
+                senha,
+                status
             });
         } catch (error) {
             await Logger.createLog(
@@ -75,6 +74,15 @@ class UsuariosService {
         } catch (error) {
             throw new Error(`Erro ao excluir o usuário: ${error.message}`);
         }
+    }
+
+    async validarUsuario(usuariosDTO) {
+        const {nome, email, senha, status} = usuariosDTO;
+
+        if (!nome || !email || !senha) {
+            throw new Error('Esta faltando dados.');
+        }
+
     }
 }
 

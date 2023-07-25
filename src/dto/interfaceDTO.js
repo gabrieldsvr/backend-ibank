@@ -5,9 +5,9 @@ class InterfaceDTO {
         return JSON.stringify(this);
     }
 
-    static desserializar(jsonString) {
+    static desserializar(jsonString,classDTO) {
     const data = JSON.parse(jsonString);
-    return new CategoriaDTO(data);
+    return new classDTO(data);
 }
 }
 

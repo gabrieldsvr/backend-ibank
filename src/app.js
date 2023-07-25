@@ -7,6 +7,7 @@ const healthCheckRoutes = require("./routes/HealthCheckRoutes");
 const contasRoutes = require("./routes/contasRouter");
 const categoriasRoutes = require("./routes/categoriasRouter");
 const transacoesRoutes = require("./routes/transacoesRouter");
+const usuariosRoutes = require("./routes/usuariosRouter");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/api', healthCheckRoutes);
 app.use('/api', contasRoutes);
 app.use('/api', categoriasRoutes);
 app.use('/api', transacoesRoutes);
+app.use('/api', usuariosRoutes);
 app.listen(8090, () => {
     console.log('Servidor rodando na porta 8090');
 });

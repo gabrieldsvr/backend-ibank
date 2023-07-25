@@ -4,10 +4,8 @@ const TranscaoDTO = require('../dto/transacaoDTO');
 class TransacoesController {
     constructor() {
         if (!TransacoesController.instance) {
-            // Coloque aqui toda a lógica de inicialização do serviço, se necessário
             TransacoesController.instance = this;
         }
-
         return TransacoesController.instance;
     }
     async criarTransacao(req, res) {
@@ -15,7 +13,6 @@ class TransacoesController {
             const dataJson = req.body;
 
             const transcaoDTO = new TranscaoDTO(dataJson);
-
             const novaTransacao = await transacoesService.criarTransacao(transcaoDTO);
             res.status(201).json(novaTransacao);
         } catch (error) {

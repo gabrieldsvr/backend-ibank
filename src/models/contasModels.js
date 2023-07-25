@@ -1,6 +1,7 @@
-const { DataTypes } = require('sequelize');
+const {DataTypes} = require('sequelize');
 const sequelize = require('../database/connection.js');
 const TiposContasEnum = require("../Enum/TiposContasEnum");
+const Usuarios = require("./usuariosModels");
 
 const Contas = sequelize.define('contas', {
     id: {
@@ -12,7 +13,14 @@ const Contas = sequelize.define('contas', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-
+    usuario: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        references: {
+            model: Usuarios,
+            key: 'id'
+        }
+    },
     banco: {
         type: DataTypes.STRING,
         allowNull: true,

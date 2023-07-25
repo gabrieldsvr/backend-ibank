@@ -4,6 +4,7 @@ const LogsModel = require("logger-sequelize/src/models/LogsModel");
 const ContasModel = require("../models/contasModels");
 const CategoriasModel = require("../models/categoriasModels");
 const TransacoesModel = require("../models/transacoesModels");
+const UsuariosModel = require("../models/usuariosModels");
 
 const migration = async () => {
     try {
@@ -11,6 +12,7 @@ const migration = async () => {
         await ContasModel.sync();
         await CategoriasModel.sync();
         await TransacoesModel.sync();
+        await UsuariosModel.sync();
 
         await sequelize.sync({ alter: true });
         console.log('Tabelas sincronizadas com sucesso!');
